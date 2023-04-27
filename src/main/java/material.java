@@ -1,3 +1,3 @@
 public enum material {
-    algodon, lino, lana, pluma, jean
+    ALGODON, LINO, LANA, SEDA, NYLON, LYCRA, POLIESTER
 }

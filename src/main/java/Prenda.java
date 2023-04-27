@@ -1,18 +1,23 @@
 public class Prenda {
     public TipoDePrenda tipo;
     public material material;
+    public trama trama;
     public Color colorPrincipal;
     public Color colorSecundario;
-    public Prenda(TipoDePrenda tipo, material material, Color colorPrincipal, Color colorSecundario) {
-        //Caso de que no sea la categoría adecuada tiro la excepción
-        if((tipo == null || material == null || colorPrincipal == null))
-            throw new RuntimeException("Todos los campos, salvo el color secundario, son obligatorios");
-       //Constructor
-       this.tipo = tipo;
-       this.material = material;
+    public Remera remera;
+    public Pantalon pantalon;
+    public Prenda(TipoDePrenda unTipo, material unMaterial, trama unaTrama, Color colorPrincipal, Color colorSecundario) {
+       this.tipo = unTipo;
+       this.material = unMaterial;
        this.colorPrincipal = colorPrincipal;
        this.colorSecundario = colorSecundario;
-
+       this.trama = unaTrama;
     }
+
+    public categorias categoria() {
+        return this.tipo.categoria();
+    }
+
+
 }
 
