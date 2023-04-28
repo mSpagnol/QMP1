@@ -4,8 +4,7 @@ public class Prenda {
     public trama trama;
     public Color colorPrincipal;
     public Color colorSecundario;
-    public Remera remera;
-    public Pantalon pantalon;
+
     public Prenda(TipoDePrenda unTipo, material unMaterial, trama unaTrama, Color colorPrincipal, Color colorSecundario) {
        this.tipo = unTipo;
        this.material = unMaterial;
