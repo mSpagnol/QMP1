@@ -1,36 +1,29 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Usuario {
-    public List<Prenda> guardarropa = new ArrayList<>();
+    private List<Prenda> guardarropa = new ArrayList<>();
+    private Integer edad;
+    ProveedorDeMotor proveedor;
 
-    public void agregarPrendaAGuardarropa(Prenda unaPrenda){
-        guardarropa.add(unaPrenda);
+    public Usuario (Integer edad, ProveedorDeMotor proveedor) {
+      this.edad = edad;
+      this.proveedor = proveedor;
     }
 
-   /* Como usuario QueMePongo, quiero poder recibir sugerencias de uniformes armados.
-    Como usuario QueMePongo, quiero que un uniforme siempre conste de una prenda superior, una inferior y un calzado */
-    public Uniforme conformarUniforme(){
-        List <Prenda> calzados = filtrarPorCategoria(categorias.calzado);
-        List <Prenda> prendaSuperiores = filtrarPorCategoria(categorias.parteSuperior);
-        List <Prenda> prendasInferiores = filtrarPorCategoria(categorias.parteInferior);
-
-        Prenda unCalzado = calzados.get(ramdomIntDeUnaLista(calzados));
-        Prenda unaPrendaSup = prendaSuperiores.get(ramdomIntDeUnaLista(prendaSuperiores));
-        Prenda unaPrendaInf = prendasInferiores.get(ramdomIntDeUnaLista(prendasInferiores));
-
-        return new Uniforme(unaPrendaSup, unaPrendaInf, unCalzado);
+    List<Sugerencia> generarSugerencias () {
+      return this.getMotor().generarSugerencias(this);
     }
 
-    public List<Prenda> filtrarPorCategoria(categorias unaCategoria){
-        return guardarropa.stream().filter(prenda -> prenda.tipo.categoria() == unaCategoria).toList();
+    public MotorSugerencias getMotor() {
+      return proveedor.getMotor();
     }
 
-    public int ramdomIntDeUnaLista(List<Prenda> unaLista){
-        Random rand = new Random();
-        return  rand.nextInt(unaLista.size());
-    }
+    public Integer getEdad() {
+      return this.edad;
+  }
 
-    //Falta el de administrador.
+    public List<Prenda> getGuardarropa(){
+      return this.guardarropa;
+  }
 }

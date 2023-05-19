@@ -4,13 +4,18 @@ public class Borrador {
     public trama unaTrama = trama.lisa;
     public Color colorPrincipal;
     public Color colorSecundario;
+    public Formalidad formalidad;
 
     public Prenda crearPrenda(){
-        return new Prenda(tipo, material, unaTrama, colorPrincipal, colorSecundario);
+        return new Prenda(tipo, material, unaTrama, colorPrincipal, colorSecundario, formalidad);
     }
     public void especificarTipo(TipoDePrenda tipo){
         verificarQueNoSeaNulo(tipo);
         this.tipo = tipo;
+    }
+
+    public void especificarFormalidad(Formalidad formalidad) {
+        this.formalidad = formalidad;
     }
 
     public void especificarMaterial(material material){
